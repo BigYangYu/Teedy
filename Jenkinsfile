@@ -6,9 +6,27 @@ pipeline {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
-        stage('pmd') {
+        stage('Run Tests') {
+            steps {
+                // 添加测试到你的 Pipeline
+                bat 'mvn test'
+            }
+        }
+        stage('Static Code Analysis') {
             steps {
                 bat 'mvn pmd:pmd'
+            }
+        }
+        stage('Generate Javadoc') {
+            steps {
+                // 生成 Javadoc 并作为构件保存
+                bat 'mvn javadoc:jar'
+            }
+            post {
+                always {
+                    // 归档生成的 Javadoc 构件
+                    archiveArtifacts artifacts: '**/target/site/apidocs/**', fingerprint: true
+                }
             }
         }
     }
