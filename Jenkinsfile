@@ -8,7 +8,7 @@ steps {
  }
  stage('pmd') {
  steps {
- sh 'mvn pmd:b88b09639ae04f4e9229c3ec54f5663b'
+ sh 'mvn pmd:pmd'
  }
  }
  }
