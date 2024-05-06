@@ -19,19 +19,13 @@ pipeline {
         }
         stage('Generate Javadoc') {
             steps {
-                script {
-                    try {
-                        // 生成 Javadoc 并作为构件保存
-                        bat 'mvn javadoc:jar'
-                    } catch (Exception e) {
-                        echo "An error occurred while generating Javadoc: ${e.message}"
-                    }
-                }
+                // 生成 Javadoc 并作为构件保存
+                bat 'mvn javadoc:jar'
             }
             post {
                 always {
-                    // 归档生成的 Javadoc 索引报告
-                    archiveArtifacts artifacts: '**/target/site/apidocs/index.html', fingerprint: true
+                    // 归档生成的 Javadoc 构件
+                    archiveArtifacts artifacts: '**/target/site/apidocs/**', fingerprint: true
                 }
             }
         }
