@@ -6,12 +6,12 @@ pipeline {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
-        // stage('Run Tests') {
-        //     steps {
-        //         // 添加测试到你的 Pipeline
-        //         bat 'mvn test'
-        //     }
-        // }
+        stage(' Test report') {
+            steps {
+                // 添加测试到你的 Pipeline
+                bat 'mvn test'
+            }
+        }
         stage('pmd') {
             steps {
                 bat 'mvn pmd:pmd'
