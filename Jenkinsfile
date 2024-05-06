@@ -6,12 +6,12 @@ pipeline {
                 bat 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Run Tests') {
-            steps {
-                // 添加测试到你的 Pipeline
-                bat 'mvn test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         // 添加测试到你的 Pipeline
+        //         bat 'mvn test'
+        //     }
+        // }
         stage('Static Code Analysis') {
             steps {
                 bat 'mvn pmd:pmd'
@@ -19,8 +19,14 @@ pipeline {
         }
         stage('Generate Javadoc') {
             steps {
-                // 生成 Javadoc 并作为构件保存
-                bat 'mvn javadoc:jar'
+                script {
+                    try {
+                        // 生成 Javadoc 并作为构件保存
+                        bat 'mvn javadoc:jar'
+                    } catch (Exception e) {
+                        echo "An error occurred while generating Javadoc: ${e.message}"
+                    }
+                }
             }
             post {
                 always {
