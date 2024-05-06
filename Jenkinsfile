@@ -12,15 +12,15 @@ pipeline {
         //         bat 'mvn test'
         //     }
         // }
-        stage('Static Code Analysis') {
+        stage('pmd') {
             steps {
                 bat 'mvn pmd:pmd'
             }
         }
-        stage('Generate Javadoc') {
+        stage('Doc') {
             steps {
                 // 生成 Javadoc 并作为构件保存
-                bat 'mvn site --fail-never'
+                bat 'mvn site --fail-never:jar'
             }
         
         }
