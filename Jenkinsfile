@@ -20,7 +20,7 @@ pipeline {
         stage('Doc') {
             steps {
                 // 生成 Javadoc 并作为构件保存
-                bat 'mvn site --fail-never:jar'
+                bat 'mvn javadoc:jar --fail-never'
             }
         
         }
