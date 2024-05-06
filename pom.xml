@@ -147,7 +147,7 @@
     <module>docs-web-common</module>
     <module>docs-web</module>
   </modules>
-  <reporting>
+<!--   <reporting>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -170,7 +170,7 @@
         </reportSets>
       </plugin>
     </plugins>
-  </reporting>
+  </reporting> -->
   <dependencyManagement>
     <dependencies>
       <dependency>
