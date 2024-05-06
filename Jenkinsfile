@@ -24,8 +24,8 @@ pipeline {
             }
             post {
                 always {
-                    // 归档生成的 Javadoc 构件
-                    archiveArtifacts artifacts: '**/target/site/apidocs/**', fingerprint: true
+                    // 归档生成的 Javadoc 索引报告
+                    archiveArtifacts artifacts: '**/target/site/apidocs/index.html', fingerprint: true
                 }
             }
         }
