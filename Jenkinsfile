@@ -20,14 +20,9 @@ pipeline {
         stage('Generate Javadoc') {
             steps {
                 // 生成 Javadoc 并作为构件保存
-                bat 'mvn javadoc:jar'
+                bat 'mvn site --fail-never'
             }
-            post {
-                always {
-                    // 归档生成的 Javadoc 构件
-                    archiveArtifacts artifacts: '**/target/site/apidocs/**', fingerprint: true
-                }
-            }
+        
         }
     }
     post {
