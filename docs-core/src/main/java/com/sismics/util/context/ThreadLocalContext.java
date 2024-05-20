@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.sismics.docs.core.model.context.AppContext;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.util.Iterator;
 import java.util.List;
 
@@ -98,5 +99,8 @@ public class ThreadLocalContext {
             iterator.remove();
             AppContext.getInstance().getAsyncEventBus().post(asyncEvent);
         }
+    }
+
+    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactoryMock) {
     }
 }
