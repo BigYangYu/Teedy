@@ -8,7 +8,7 @@ steps {
  }
  stage('K8s') {
  steps {
- bat 'kubectl set image deployments/hello-node docs=yang2003/teedy2024_manual0'
+ sh 'kubectl set image deployments/hello-node docs=yang2003/teedy2024_manual0'
  }
  }
  }
